@@ -19,7 +19,8 @@ const Blog = ({ entries }) => {
 
 //Se exporta en esta misma página. Esta función corre en el servidor
 export async function getStaticProps() {
-    const url = "http://localhost:1337/blogs";
+    const url = `${process.env.API_URL}/blogs` 
+
     const response = await fetch(url);
     const entries = await response.json();
 
