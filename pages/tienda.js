@@ -16,7 +16,7 @@ const Tienda = ({guitars}) => {
 
 //Estas funciones de consultas a APIS solo pueden ser ejecutadas en páginas y urls dinámicas, no en componentes
 export async function getServerSideProps() {
-    const url = `${process.env.API_URL}/guitars` 
+    const url = `${process.env.API_URL}/guitars/` 
 
     const response = await fetch(url);
     const guitars = await response.json();
