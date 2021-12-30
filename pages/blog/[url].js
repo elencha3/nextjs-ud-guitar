@@ -6,7 +6,9 @@ import styles from "../../styles/BlogEntry.module.css"
 const EntryId = ({ entry }) => {
     const { title, content, image, published_at } = entry;
     return (
-        <Layout>
+        <Layout
+        page={title}
+        >
             <main className="container">
                 <h1 className="heading">{title}</h1>
                 <article className={styles.entry}>
@@ -29,7 +31,7 @@ export async function getStaticPaths() {
     const entries = await response.json();
 
     const paths = entries.map((entry) => ({
-        params: { id: entry.id.toString() },
+        params: { url: entry.url },
     }));
 
     return {
@@ -38,15 +40,15 @@ export async function getStaticPaths() {
     };
 }
 
-export async function getStaticProps({ params: { id } }) {
+export async function getStaticProps({ params: { url } }) {
     //Si corre del lado del servidor, puedes nombrar la variable de como quieras pero si es en el client, NEXT_PUBLIC_
-    const url = `${process.env.API_URL}/blogs/${id}`;
-    const response = await fetch(url);
+    const urlBlog = `${process.env.API_URL}/blogs?url=${url}`;
+    const response = await fetch(urlBlog);
 
     const entry = await response.json();
     return {
         props: {
-            entry,
+            entry:entry[0]
         },
     };
 }

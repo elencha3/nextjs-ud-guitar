@@ -4,7 +4,7 @@ import { formatDate } from "../helpers";
 import styles from "../styles/BlogEntry.module.css";
 
 const BlogEntry = ({ entry }) => {
-    const { title, caption, content, image, published_at, id } = entry;
+    const { title, caption, content, image, published_at, id, url } = entry;
 
     return (
         <article>
@@ -20,7 +20,7 @@ const BlogEntry = ({ entry }) => {
                 <h3>{entry.title}</h3>
                 <p className={styles.date}>{formatDate(published_at)}</p>
                 <p className={styles.caption}>{caption}</p>
-                <Link href={`/blog/${id}`}>
+                <Link href={`/blog/${url}`}>
                     
                     <a className={styles.link}> Leer Entrada </a>
                 </Link>
