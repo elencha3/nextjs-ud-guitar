@@ -4,9 +4,9 @@ import Course from "../components/Course";
 import BlogList from "../components/BlogList";
 
 export default function Home({ guitars, course, entries }) {
-    console.log(entries)
+    
     return (
-        <Layout page="Inicio">
+        <Layout page="Inicio" guitar={guitars[3]}>
             <main className="container">
                 <h1 className="heading"> Nuestra colección</h1>
                 <GuitarList guitars={guitars} />
@@ -22,7 +22,7 @@ export default function Home({ guitars, course, entries }) {
 }
 
 export async function getServerSideProps() {
-    const urlGuitars = `${process.env.API_URL}/guitars`;
+    const urlGuitars = `${process.env.API_URL}/guitars/`;
     const urlCourses = `${process.env.API_URL}/course`;
     const urlBlog = `${process.env.API_URL}/blogs?_limit=3&_sort=created_at:desc`;
 

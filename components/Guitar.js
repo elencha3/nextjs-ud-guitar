@@ -4,7 +4,7 @@ import styles from "../styles/Guitar.module.css";
 
 const Guitar = ({ guitar }) => {
     const { name, description, image, price, url } = guitar;
-    console.log(guitar)
+    
 
     return (
         <div className={styles.guitar}>
@@ -19,7 +19,7 @@ const Guitar = ({ guitar }) => {
                 <h3>{name}</h3>
                 <p className={styles.description}>{description}</p>
                 <p className={styles.price}>{price}</p>
-                <Link href={`guitars/${url}`} passHref>
+                <Link href={`/guitars/${url}`} passHref>
                     <a className={styles.link}>Ver Guitarra</a>
                 </Link>
             </div>
